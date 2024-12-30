@@ -63,12 +63,9 @@ export const TodoListContainer = styled.ul`
 export const TodoItem = styled.li`
   display: flex;
   align-items: center;
-  width: 673px;
+  position: relative;
   height: 96px;
   padding: 16px;
-  gap: 16px;
-  background: #f9f9f9;
-  border-radius: 8px;
 `;
 
 export const Checkbox = styled.div`
@@ -84,16 +81,20 @@ export const Checkbox = styled.div`
 
 export const TodoText = styled.span`
   font-size: 16px;
+  padding-left: 10px;
   color: #333;
 `;
 
 export const DeleteButton = styled.button`
+  position: absolute;
   width: 14px;
   height: 14px;
+  right: 20px;
   border: none;
   color: #b9b9b9;
   display: flex;
   background: none;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 `;

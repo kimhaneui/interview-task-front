@@ -1,3 +1,5 @@
+import { useState } from 'react';
+import CloseIcon from '../../../icons/CloseIcon';
 import {
   Checkbox,
   DeleteButton,
@@ -10,15 +12,31 @@ import {
   TodoText,
   TotalCount,
 } from './TodoList.styles';
-
 const TodoList = () => {
+  const [activeTab, setActiveTab] = useState('All');
+
+  const handleTabClick = (tabName) => {
+    setActiveTab(tabName);
+  };
   return (
     <TodoContainer>
       {/* 탭 영역 */}
       <Tabs>
-        <Tab>All</Tab>
-        <Tab>To Do</Tab>
-        <Tab>Done</Tab>
+        <Tab
+          isActive={activeTab === 'All'}
+          onClick={() => handleTabClick('All')}>
+          All
+        </Tab>
+        <Tab
+          isActive={activeTab === 'To Do'}
+          onClick={() => handleTabClick('To Do')}>
+          To Do
+        </Tab>
+        <Tab
+          isActive={activeTab === 'Done'}
+          onClick={() => handleTabClick('Done')}>
+          Done
+        </Tab>
       </Tabs>
       {/* 리스트 영역 */}
       <ListArea>
@@ -29,17 +47,23 @@ const TodoList = () => {
           <TodoItem>
             <Checkbox />
             <TodoText>첫 번째 할 일</TodoText>
-            <DeleteButton>X</DeleteButton>
+            <DeleteButton>
+              <CloseIcon></CloseIcon>
+            </DeleteButton>
           </TodoItem>
           <TodoItem>
             <Checkbox />
             <TodoText>두 번째 할 일</TodoText>
-            <DeleteButton>X</DeleteButton>
+            <DeleteButton>
+              <CloseIcon></CloseIcon>
+            </DeleteButton>
           </TodoItem>
           <TodoItem>
             <Checkbox />
             <TodoText>세 번째 할 일</TodoText>
-            <DeleteButton>X</DeleteButton>
+            <DeleteButton>
+              <CloseIcon></CloseIcon>
+            </DeleteButton>
           </TodoItem>
         </TodoListContainer>
       </ListArea>

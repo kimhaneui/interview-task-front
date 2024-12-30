@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 export const TodoContainer = styled.div`
   width: 737px;
   height: 580px;
+  margin-top: 20px;
   top: 388px;
   left: 591px;
   padding: 32p;
@@ -13,10 +14,10 @@ export const TodoContainer = styled.div`
 
 export const Tabs = styled.div`
   display: flex;
-  gap: 8px;
   width: 324px;
   height: 40px;
   margin: 0 auto;
+  padding-top: 25px;
 `;
 
 export const Tab = styled.button`
@@ -27,6 +28,8 @@ export const Tab = styled.button`
   border: none;
   font-size: 16px;
   cursor: pointer;
+  background: ${({ isActive }) => (isActive ? '#EBF4FF' : 'transparent')};
+  color: ${({ isActive }) => (isActive ? '#2182F3' : '#454545')};
 `;
 
 export const ListArea = styled.div`
@@ -53,7 +56,6 @@ export const TotalCount = styled.div`
 export const TodoListContainer = styled.ul`
   display: flex;
   flex-direction: column;
-  gap: 16px;
   width: 673px;
   margin: 0;
   padding: 0;
@@ -65,14 +67,13 @@ export const TodoItem = styled.li`
   align-items: center;
   position: relative;
   height: 96px;
-  padding: 16px;
 `;
 
 export const Checkbox = styled.div`
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  border: 1px solid #333;
+  border: 1px solid #e5e5e5;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -87,8 +88,6 @@ export const TodoText = styled.span`
 
 export const DeleteButton = styled.button`
   position: absolute;
-  width: 14px;
-  height: 14px;
   right: 20px;
   border: none;
   color: #b9b9b9;

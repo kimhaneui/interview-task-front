@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { Container, InputBox } from './ToDoSearch.styles';
+import { Container, InputBox } from './TodoSearch.styles';
 import useTodoStore from '../../../../store/useTodoStore';
-const ToDoSearch = () => {
+const TodoSearch = () => {
   const [inputValue, setInputValue] = useState('');
   const { addTodo } = useTodoStore();
 
@@ -27,4 +27,4 @@ const ToDoSearch = () => {
   );
 };
 
-export default ToDoSearch;
+export default TodoSearch;

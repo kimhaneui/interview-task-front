@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { CheckboxProps, TabProps } from '../../types/Todo.types';
 
 export const TodoContainer = styled.div`
   width: 737px;
@@ -20,7 +21,7 @@ export const Tabs = styled.div`
   padding-top: 25px;
 `;
 
-export const Tab = styled.button`
+export const Tab = styled.button<TabProps>`
   width: 108px;
   height: 40px;
   padding: 8px;
@@ -31,6 +32,7 @@ export const Tab = styled.button`
   background: ${({ isActive }) => (isActive ? '#EBF4FF' : 'transparent')};
   color: ${({ isActive }) => (isActive ? '#2182F3' : '#454545')};
 `;
+
 
 export const ListArea = styled.div`
   display: flex;
@@ -69,21 +71,22 @@ export const TodoItem = styled.li`
   height: 96px;
 `;
 
-export const Checkbox = styled.div`
+export const Checkbox = styled.div<CheckboxProps>`
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  border: 1px solid #e5e5e5;
+  border: 1px solid ${({ isChecked }) => (isChecked ? 'transparent' : '#e5e5e5')};
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  background-color: ${({ isChecked }) => (isChecked ? '#2182F3' : 'transparent')};
 `;
 
-export const TodoText = styled.span`
+export const TodoText = styled.span<CheckboxProps>`
   font-size: 16px;
   padding-left: 10px;
-  color: #333;
+  color: ${({ isChecked }) => (isChecked ? '#868686' : '#333')};
 `;
 
 export const DeleteButton = styled.button`

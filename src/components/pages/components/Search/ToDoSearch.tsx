@@ -36,7 +36,11 @@ const TodoSearch = () => {
         setError(ERROR_MESSAGES.MAX_UNCOMPLETED_TODOS);
         return;
       }
-
+      const isDuplicate = todos.some((todo:Itodo) => todo.text === inputValue);
+      if (isDuplicate) {
+        setError(ERROR_MESSAGES.DUPLICATE);
+        return;
+      }
       addTodo(inputValue);
       resetInput();
     }

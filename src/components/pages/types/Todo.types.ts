@@ -6,3 +6,9 @@ export interface TabProps {
 export interface CheckboxProps {
     isChecked: boolean
 }
+
+export interface Itodo {
+    id: number;
+    text: string;
+    completed: boolean;
+}

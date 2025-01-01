@@ -3,7 +3,7 @@ import { CheckboxProps, TabProps } from '../../types/Todo.types';
 
 export const TodoContainer = styled.div`
   width: 737px;
-  height: 580px;
+  min-height: 580px;
   margin-top: 20px;
   top: 388px;
   left: 591px;
@@ -39,7 +39,7 @@ export const ListArea = styled.div`
   flex-direction: column;
   gap: 32px;
   width: 673px;
-  height: 444px;
+  min-height: 444px;
   margin: 0 auto;
 `;
 

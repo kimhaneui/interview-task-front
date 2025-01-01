@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import CloseIcon from '../../../icons/CloseIcon';
 import useTodoStore from '../../../../store/useTodoStore';
 import {
@@ -14,53 +14,49 @@ import {
   TotalCount,
 } from './TodoList.styles';
 import CheckIcon from '../../../icons/CheckIcon';
+import { Itodo } from '../../types/Todo.types';
+import { TABS, TabType } from '../../constants/todoConstants';
+
+const filterTodos = (todos: Itodo[], tab: string): Itodo[] => {
+  switch (tab) {
+    case TABS.TO_DO:
+      return todos.filter((todo) => !todo.completed);
+    case TABS.DONE:
+      return todos.filter((todo) => todo.completed);
+    default:
+      return todos;
+  }
+};
+
 const TodoList = () => {
-  const [activeTab, setActiveTab] = useState('All');
+  const [activeTab, setActiveTab] = useState<TabType>('ALL'); 
   const { todos, toggleTodo, deleteTodo } = useTodoStore();
-  const handleTabClick = (tabName: string) => {
+
+  const filteredTodos = useMemo(() => filterTodos(todos, TABS[activeTab]), [todos, activeTab]);
+
+  const handleTabClick = (tabName: TabType) => {
     setActiveTab(tabName);
   };
-  // 필터링된 리스트
-  const filteredTodos = todos.filter((todo: any) => {
-    if (activeTab === 'To Do') return !todo.completed;
-    if (activeTab === 'Done') return todo.completed;
-    return true;
-  });
+
   return (
     <TodoContainer>
-      {/* 탭 영역 */}
       <Tabs>
-        <Tab
-          isActive={activeTab === 'All'}
-          onClick={() => handleTabClick('All')}
-        >
-          All
-        </Tab>
-        <Tab
-          isActive={activeTab === 'To Do'}
-          onClick={() => handleTabClick('To Do')}
-        >
-          To Do
-        </Tab>
-        <Tab
-          isActive={activeTab === 'Done'}
-          onClick={() => handleTabClick('Done')}
-        >
-          Done
-        </Tab>
+        {Object.keys(TABS).map((tabKey) => (
+          <Tab
+            key={tabKey}
+            isActive={activeTab === tabKey}
+            onClick={() => handleTabClick(tabKey as TabType)}
+          >
+            {TABS[tabKey as TabType]}
+          </Tab>
+        ))}
       </Tabs>
-      {/* 리스트 영역 */}
       <ListArea>
-        {/* 총 개수 영역 */}
         <TotalCount>총 {filteredTodos.length}개</TotalCount>
-        {/* 리스트 */}
         <TodoListContainer>
-          {filteredTodos.map((todo: any) => (
+          {filteredTodos.map((todo) => (
             <TodoItem key={todo.id}>
-              <Checkbox
-                isChecked={todo.completed}
-                onClick={() => toggleTodo(todo.id)}
-              >
+              <Checkbox isChecked={todo.completed} onClick={() => toggleTodo(todo.id)}>
                 {todo.completed && <CheckIcon />}
               </Checkbox>
               <TodoText isChecked={todo.completed}>{todo.text}</TodoText>

@@ -21,3 +21,9 @@ export const InputBox = styled.input`
     color: #b9b9b9;
   }
 `;
+
+export const ErrorMessage = styled.span`
+  color: red;
+  font-size: 12px;
+  margin-top: 4px;
+`;

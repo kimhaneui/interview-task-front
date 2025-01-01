@@ -16,6 +16,7 @@ export const InputBox = styled.input`
   border: none;
   background: #e5e5e5;
   font-size: 16px;
+  box-sizing: border-box;
   color: #333333;
   &::placeholder {
     color: #b9b9b9;

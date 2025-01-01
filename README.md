@@ -39,13 +39,16 @@
 
 ## 개발 가이드 
 1. 할 일 목록 관리:
- - todos는 zustand 를 사용해서서 useTodoStore에서 관리.
+ - todos는 zustand 를 사용해서 useTodoStore에서 관리.
 
 2. 탭
  - 상수 TABS에 새로운 항목을 추가하고, 필터링 로직을 filterTodos 함수에 정의.
 
 3. 스타일 
  - 컴포넌트 별로 스타일 파일에서 독립적으로 관리.
+
+4. 테스트 코드
+ - Jest와 React Testing Library를 사용하여 각각의 시나리오를 테스트.
 
 ## 파일 구조 
 ```

@@ -1,6 +1,6 @@
 import useTodoStore from '../../../../store/useTodoStore';
 import TodoSearch from './TodoSearch';
-import React, { act } from 'react';
+import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { ERROR_MESSAGES } from '../../constants/errorMessages';
@@ -101,7 +101,6 @@ describe('TodoSearch Component', () => {
     render(<TodoSearch />);
     const input = screen.getByPlaceholderText(ERROR_MESSAGES.EMPTY_TODO);
 
-    // Add a duplicate todo
     fireEvent.change(input, { target: { value: 'Existing Todo' } });
     fireEvent.keyDown(input, { key: 'Enter', code: 'Enter' });
 
